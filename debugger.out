@@ -1,4 +1,7 @@
 Next at t=0
 (0) [0x0000fffffff0] f000:fff0 (unk. ctxt): jmpf 0xf000:e05b          ; ea5be000f0
 <bochs:1> c
-(0).[785844000] [0x000000007c0c] 0000:7c0c (unk. ctxt): jmp .-2  (0x00007c0c)     ; ebfe
+Next at t=44177947
+(0) [0x0000000fff53] f000:ff53 (unk. ctxt): iret                      ; cf
+<bochs:2> q
+(0).[44177947] [0x0000000fff53] f000:ff53 (unk. ctxt): iret                      ; cf
