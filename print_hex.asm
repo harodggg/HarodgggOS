@@ -2,35 +2,38 @@ print_hex:
 	pusha 			;
 	mov ah,0x0e
 	mov cl,4		;
-	
-	mov bx, dx 		; 备份
 
-	and dl,00001111b	;
-	mov al,dl
+
+	; 最高的位
+	mov bx,dx		; 备份 dx
+
+	shr dh,cl		;
+	mov al,dh 		;
 	call hex_ascill
 	int 0x10
 
-	mov dx,bx		;
+	; 第二
+	mov dx,bx		;	恢复 dx
+
+	and dh, 0fh 		;
+	mov al,dh		;
+	call hex_ascill
+	int 0x10		;
+
+	mov dx,bx		; 	恢复dx 
 
 	shr dl,cl		;
 	mov al,dl		;
 	call hex_ascill
 	int 0x10			;
 	
-	mov dx,bx		;
+	mov dx, bx 		; 备份
 
-	and dh, 0fh 		;
-	mov al,dh		;
+	and dl,00001111b	;
+	mov al,dl
 	call hex_ascill
-	int 0x10		;
-	
+	int 0x10
 
-	mov dx,bx		;
-
-	shr dh,cl		;
-	mov al,dh 		;
-	call hex_ascill
-	int 0x10	
 
 	popa
 	
