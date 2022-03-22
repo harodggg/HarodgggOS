@@ -41,8 +41,7 @@ kernel.bin: kernel/kernel_entry.o ${OBJ}
 # This is the actual disk image that the computer loads 
 # which is the combination of our compiled bootsector and kernel
 HarodgggOS.img: boot/boot_sect.bin kernel.bin
-	cat $^ > os-image
-
+	cat $^ > HarodgggOS.img 
 
 # Assemble the kernel_entry .
 %.o : %.asm
@@ -51,4 +50,6 @@ HarodgggOS.img: boot/boot_sect.bin kernel.bin
 %.bin : %.asm 
 	nasm $< -f bin -I 'boot/' -o $@
 	
-
+clean:
+	rm -rf *.bin *.dis *.o
+	rm -rf kernel/*.o boot/*.bin drivers/*.o
