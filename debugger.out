@@ -1,7 +1,4 @@
 Next at t=0
 (0) [0x0000fffffff0] f000:fff0 (unk. ctxt): jmpf 0xf000:e05b          ; ea5be000f0
 <bochs:1> c
-Next at t=585235904
-(0) [0x000000007c96] 0008:0000000000007c96 (unk. ctxt): jmp .-2  (0x00007c96)     ; ebfe
-<bochs:2> q
-(0).[585235904] [0x000000007c96] 0008:0000000000007c96 (unk. ctxt): jmp .-2  (0x00007c96)     ; ebfe
+(0).[404728000] [0x000000007c96] 0008:0000000000007c96 (unk. ctxt): jmp .-2  (0x00007c96)     ; ebfe
