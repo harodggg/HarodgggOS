@@ -1,5 +1,4 @@
-#include "screen.h"
-#include "low_level.h"
+#ifndef _SCREEN_H_
 
 #define VIDEO_ADDRESS 0xb8000
 #define MAX_ROWS 25 
@@ -16,3 +15,4 @@
 
 void clear_screen();
 
+#endif

@@ -1,6 +1,16 @@
 #include "screen.h"
 #include "low_level.h"
 
+int get_screen_offset(int col,int row);
+void print_char(char character, int col, int row, char attribute_byte);
+void print(char* message);
+void print_at(char* message, int col, int row);
+
+void set_cursor(int offset);
+void set_cursor_offset(int offset);
+
+int get_cursor();
+
 /* Print a char on the screen at col, row, or at cursor position */
 void print_char(char character, int col, int row, char attribute_byte) { 
 	/* Create a byte (char) pointer to the start of video memory */
@@ -41,17 +51,17 @@ void print_char(char character, int col, int row, char attribute_byte) {
 
 	// Make scrolling adjustment, for when we reach the bottom
 	// of the screen.
-	offset = handle_scrolling(offset);
+//	offset = handle_scrolling(offset);
 	// Update the cursor position on the screen device.
 	set_cursor_offset(offset);
 
-	return offset;
+//	return offset;
 
 }
 
 
 int get_screen_offset(int col, int row) { 
-	return 2 * (row*MAX_COLS + COLS);
+	return 2 * (row*MAX_COLS + col);
 }
 
 int get_cursor_offset() { 
@@ -89,7 +99,7 @@ void set_cursor(int offset) {
     	port_byte_out(REG_SCREEN_DATA, (uint8_t)(offset & 0xff));
 }
 
-void print_at(char* message. int col, int row) { 
+void print_at(char* message, int col, int row) { 
 	// Update the cursor if col and row not negtive.
 	if (col >= 0 && row >= 0) { 
 		set_cursor(get_screen_offset(col,row));
@@ -121,3 +131,21 @@ void clear_screen() {
 }
 	
 }
+int get_cursor() { 
+	// The device uses its control register as an index
+	// to select its internal registers , of which we are
+	// interested in:
+	// reg 14: which is the high byte of the cursor ’s offset
+	// reg 15: which is the low byte of the cursor ’s offset
+	// Once the internal register has been selected , we may read or
+	// write a byte on the data register.
+	port_byte_out(REG_SCREEN_CTRL , 14);
+	int offset = port_byte_in(REG_SCREEN_DATA) << 8;
+	port_byte_out(REG_SCREEN_CTRL , 15);
+	offset += port_byte_in(REG_SCREEN_DATA );
+	// Since the cursor offset reported by the VGA hardware is the
+	// number of characters , we multiply by two to convert it to
+	// a character cell offset.
+	return offset *2;
+}
+
