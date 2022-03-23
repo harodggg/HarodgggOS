@@ -86,16 +86,17 @@ void set_cursor_offset(int offset) {
     	port_byte_out(REG_SCREEN_CTRL, 15);
     	port_byte_out(REG_SCREEN_DATA, (unsigned char)(offset & 0xff));
 	
-}`
+};
+
 void set_cursor(int offset) { 
 	offset /= 2; 
 	// Convert from cell offset to char offset.
 	// This is similar to get_cursor, only now we write 
 	// bytes to those internal device registers.
 	port_byte_out(REG_SCREEN_CTRL, 14);
-    	port_byte_out(REG_SCREEN_DATA, (uint8_t)(offset >> 8));
+    	port_byte_out(REG_SCREEN_DATA, (unsigned char)(offset >> 8));
     	port_byte_out(REG_SCREEN_CTRL, 15);
-    	port_byte_out(REG_SCREEN_DATA, (uint8_t)(offset & 0xff));
+    	port_byte_out(REG_SCREEN_DATA, (unsigned char)(offset & 0xff));
 }
 
 void print_at(char* message, int col, int row) { 
@@ -129,7 +130,6 @@ void clear_screen() {
 	set_cursor_offset(get_screen_offset(0,0));
 }
 	
-}
 int get_cursor() { 
 	// The device uses its control register as an index
 	// to select its internal registers , of which we are
