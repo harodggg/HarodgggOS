@@ -29,7 +29,7 @@ all: HarodgggOS.img
 
 # Run bochs to simulate booting of our code . 
 run: all 
-	bochs -f bochsrc
+	bochs -q -f bochsrc
 		
 	
 # This builds the binary of our kernel from two object files:

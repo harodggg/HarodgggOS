@@ -1,16 +1,18 @@
-void main() { 
+#include "../drivers/screen.h"
+
+//void main() { 
 	// Create a pointer to a char, and point it to the first text cell of 
 	// video memory (i.e. the top-left of the screen)
 	
-	char* video_memory = (char *) 0xb8000;
-	video_memory = video_memory + 32;
+//	char* video_memory = (char *) 0xb8000;
+//	video_memory = video_memory + 32;
 
 	// At the address pointed to by video_memory, store the character 'X'
 	// (i.e. display 'X' in the top-left of the screen) . 
 	
-	*video_memory = 'x';
-	do_something();
-}
+//	*video_memory = 'x';
+//}
  
-int do_something() { 
+void main() { 
+	clear_screen(); 
 }
