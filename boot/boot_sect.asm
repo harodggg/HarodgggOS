@@ -12,6 +12,8 @@ KERNEL_OFFSET equ 0x1000	; This is the memory offset ot which we will load our k
 	call print_string	; booting from 16-bit real mode 
 
 	call load_kernel	; Load our kernel
+	
+	
 
 	call switch_to_pm 	; Switch to protected mode. from which 
 				; we will not return 

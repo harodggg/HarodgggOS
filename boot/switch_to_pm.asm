@@ -5,6 +5,11 @@ switch_to_pm:
 	cli 				; We must switch of interrupts until we have 
 					; set-up the protected mode interrupt vector
 					; otherwise interrupts will run riot.
+
+	push ax 			; enables A20
+	mov ax, 0x2401
+	int 0x15
+	pop ax
 	
 	lgdt [gdt_descriptor]		; Load our global descriptor table , which defines 
 					; the protected mode segments (e.g. for code and data)
