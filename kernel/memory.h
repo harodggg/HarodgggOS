@@ -1,4 +1,4 @@
-#ifndef _MEMORY_H
+#ifndef MEMORY_H
 
 #endif
 

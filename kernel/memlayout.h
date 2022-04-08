@@ -1,3 +1,3 @@
-#ifndef _MEMLAYOUT_H
+#ifndef MEMLAYOUT_H
 
 #endif 
