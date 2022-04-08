@@ -1,4 +1,5 @@
 #include "../drivers/screen.h"
+#include "./memory.h"
 
 void main() { 
 
