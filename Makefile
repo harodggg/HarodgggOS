@@ -22,7 +22,7 @@ create_img:
 
 # Generic rule for building 'somefile.o' from 'somefile.c'
 %.o : %.c ${HEADERS}
-	gcc -m32  -fno-PIC -ffreestanding -c $< -o $@
+	gcc-7 -m32  -fno-PIC -ffreestanding -c $< -o $@
 
 # Defaul build target 
 all: HarodgggOS.img 

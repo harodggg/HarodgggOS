@@ -21,7 +21,7 @@ mouse: enabled=0
 #keyboard_mapping: enabled=1, map=/usr/share/bochs/keymaps/x11-pc-us.map
 
 # use gui by sdl2
-display_library: sdl2
+#display_library: sdl2
 
 # user debuger 
 debugger_log: debugger.out
